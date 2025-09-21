@@ -30,7 +30,11 @@ sns.boxplot(x=movies['duration_int'], color="orange", ax=ax)
 st.pyplot(fig)
 
 # 3. Conteo de shows por país
-
+st.subheader("Top 10 países con más contenido en Netflix")
+top_countries = df['country'].value_counts().head(10).reset_index()
+fig = px.bar(top_countries, x='index', y='country', color='country',
+             labels={'index':'País','country':'Cantidad'}, title="Contenido por país")
+st.plotly_chart(fig)
 
 # 4. Conteo por rating
 st.subheader("Distribución de clasificaciones (rating)")
